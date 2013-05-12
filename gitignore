@@ -1,0 +1,17 @@
+.DS_Store
+tags
+.netrwhist
+.zsh_rake_cache
+.console
+*~
+TAGS
+db/GeoLiteCity.dat
+lib_ext/
+log
+config/initializers/local.rb
+public/javascripts/common/chosen/
+config/query_reviewer.yml
+.team
+.env
+script/smart_deals_local_server
+*.swo

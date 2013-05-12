@@ -1,0 +1,40 @@
+[user]
+	name = Nate Delage
+	email = nate@natedelage.com
+
+[color]
+  branch = auto
+  diff   = auto
+  status = auto
+
+[color "branch"]
+  current = yellow reverse
+  local   = yellow
+  remote  = green
+
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old  = red bold
+  new  = green bold
+
+[color "status"]
+  added     = green
+  changed   = yellow
+  untracked = cyan
+
+[merge]
+  tool = opendiff
+
+[repack]
+  usedeltabaseoffset = true
+
+[alias]
+  st   = status -sb
+  lg   = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --graph --abbrev-commit --date=relative  
+  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+
+[push]
+	default = tracking
+[core]
+	excludesfile = /Users/nate/.gitignore
