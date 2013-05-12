@@ -1,17 +1,14 @@
---type-add
-ruby=haml
+# lexically sort filenames
+--sort-files
 
---type-add
-ruby=slim
+--type-set=ruby=rake,haml
+--type-set=ruby=slim
+--type-set=js=.coffee
+--type-set=css=sass
+--type-set=cucumber=feature
+--type-set=html=.ftl
+--type-add=js=json
 
---type-add
-js=.coffee
-
---type-set
-coffee=.coffee
-
---type-add
-css=.sass
-
---type-add
-html=.ftl
+# add types ack doesn't know about
+--type-set=MARKDOWN=md,mkd,markdown
+--type-set=RDOC=rdoc

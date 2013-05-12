@@ -37,4 +37,10 @@
 [push]
 	default = tracking
 [core]
-	excludesfile = /Users/nate/.gitignore
+	excludesfile = /opt/boxen/config/git/gitignore
+
+[credential]
+helper = /opt/boxen/bin/boxen-git-credential
+
+[hub]
+protocol = https
