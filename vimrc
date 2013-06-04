@@ -83,6 +83,11 @@ set wildmode=list:longest,list:full
 " Load indent files, to automatically do language-dependent indenting.
 filetype plugin indent on
 
+" All splits should be at least 30 lines tall (auto resizing focused split)
+" And splits should be a minimum of 5 lines tall
+set winheight=30
+set winminheight=5
+
 " Leader + Custom Mappings
 let mapleader = "\\"
 
@@ -123,54 +128,46 @@ if filereadable(".vimrc.local")
   source .vimrc.local
 endif
 
+" Test helpers from Gary Bernhardt's screen cast:
+" https://www.destroyallsoftware.com/screencasts/catalog/file-navigation-in-vim
+" https://www.destroyallsoftware.com/file-navigation-in-vim.html
+function! RunTests(filename)
+    " Write the file and run tests for the given filename
+    :w
+    :silent !echo;echo;echo;echo;echo
+    exec ":!clear; time rspec " . a:filename
+endfunction
 
+function! SetTestFile()
+    " Set the spec file that tests will be run for.
+    let t:grb_test_file=@%
+endfunction
 
-"" filetype plugin indent on
-"set nocompatible
-"syntax on
-"" set nocursorcolumn
-"" set nocursorline
-"" syntax sync minlines=256
-"
-"set nobackup
-"set nowritebackup
-"
-"set tabstop=2
-"set bs=2
-"
-"set cursorline
-"hi CursorLine cterm=NONE ctermbg=black
-"
-"set shiftwidth=2
-"set expandtab
-"set nu
-"set ruler
-"set nowrap
-"set autoindent
-"filetype plugin indent on
-"
-"set showmatch
-"set hlsearch
-"set incsearch
-"
-"let Tlist_Ctags_Cmd="/usr/local/bin/ctags"
-"
-"" syntastic confi
-"" set statusline+=%#warningmsg#
-"" set statusline+=%{SyntasticStatuslineFlag()}
-"" set statusline+=%*
-"" let syntastic_enable_signs=1
-"
-"" Always display the status line
-"set laststatus=2
-"
-"set t_Co=256
-"
-"colorscheme railscasts
-"
-"" use ctr h & l to switch between windows, skip need to crt w + l
-"map <C-H> <C-W>h
-"map <C-L> <C-W>l
-"" same for j & k
-"map <C-J> <C-W>j
-"map <C-K> <C-W>k
+function! RunTestFile(...)
+    if a:0
+        let command_suffix = a:1
+    else
+        let command_suffix = ""
+    endif
+
+    " Run the tests for the previously-marked file.
+    let in_spec_file = match(expand("%"), '_spec.rb$') != -1
+    if in_spec_file
+        call SetTestFile()
+    elseif !exists("t:grb_test_file")
+        return
+    end
+    call RunTests(t:grb_test_file . command_suffix)
+endfunction
+
+function! RunNearestTest()
+    let spec_line_number = line('.')
+    call RunTestFile(":" . spec_line_number)
+endfunction
+
+" Run this file
+map <leader>m :call RunTestFile()<cr>
+" Run only the example under the cursor
+map <leader>. :call RunNearestTest()<cr>
+" Run all test files
+map <leader>a :call RunTests('spec')<cr>
