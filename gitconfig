@@ -38,6 +38,7 @@
 	default = tracking
 [core]
 	excludesfile = /opt/boxen/config/git/gitignore
+	editor = /usr/bin/vim
 
 [credential]
 helper = /opt/boxen/bin/boxen-git-credential

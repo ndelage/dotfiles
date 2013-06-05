@@ -1,12 +1,12 @@
 # Set custom prompt
-setopt PROMPT_SUBST
-autoload -U promptinit
-promptinit
-prompt grb
+# setopt PROMPT_SUBST
+# autoload -U promptinit
+# promptinit
+# prompt grb
 
 # Initialize completion
-autoload -U compinit
-compinit
+# autoload -U compinit
+# compinit
 
 # Add paths
 #export PATH=/usr/local/sbin:/usr/local/bin:${PATH}
