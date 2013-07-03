@@ -28,7 +28,7 @@ Bundle 'tpope/vim-rails'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
-Bundle 'git://github.com/wincent/Command-T.git'
+Bundle 'kien/ctrlp.vim'
 
 " required for Vundle
 filetype plugin indent on
