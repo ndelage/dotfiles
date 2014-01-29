@@ -60,8 +60,8 @@ colorscheme railscasts
 " highlight Folded  guibg=#0A0A0A guifg=#9090D0
 
 " Numbers
-set number
-set numberwidth=5
+" set number
+" set numberwidth=5
 
 " Syntax Highlighting
 syntax on
@@ -85,8 +85,8 @@ filetype plugin indent on
 
 " All splits should be at least 30 lines tall (auto resizing focused split)
 " And splits should be a minimum of 5 lines tall
-set winheight=30
-set winminheight=5
+" set winheight=30
+" set winminheight=5
 
 " Leader + Custom Mappings
 let mapleader = "\\"
@@ -95,13 +95,16 @@ let mapleader = "\\"
 map <Leader>qq :sp ~/.vimrc<CR><C-W>_ 
 
 " -- Open MRU (Most Recently Used plugin)
-map <Leader>m :MRU 
+map <Leader>r :MRU 
 
 " -- Close current window
 map <Leader>x :close<CR>
 
 " -- Close quickfix window
 map <Leader>c :cclose<CR>
+
+" Paste to end of line with ,
+nmap , $p
 
 let g:CommandTMaxFiles=50000
 set wildignore+=.git,tmp,log,*.png,*.jpg,*.jpeg,*.gif,public/analytic,public/fonts,public/sounds,public/images,public/flash

@@ -7,6 +7,7 @@ ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="robbyrussell"
 
+unsetopt correct
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
@@ -60,7 +61,7 @@ export HISTFILE="$HOME/.history"
 export SAVEHIST=$HISTSIZE
 
 # Use vim as the editor
-export EDITOR=vi
+export EDITOR=vim
 
 # By default, zsh considers many characters part of a word (e.g., _ and -).
 # Narrow that down to allow easier skipping through words via M-f and M-b.
@@ -70,3 +71,13 @@ export WORDCHARS='*?[]~&;!$%^<>'
 export ACK_COLOR_MATCH='red'
 
 [[ -e ~/.profile ]] && emulate sh -c 'source ~/.profile'
+eval "$(rbenv init -)"
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+### Add ~/bin
+export PATH=~/bin:$PATH
+
+# Personal aliases
+alias reload_db="rake db:drop db:create db:migrate db:test:prepare"

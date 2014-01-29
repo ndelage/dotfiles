@@ -12,3 +12,6 @@
 # add types ack doesn't know about
 --type-set=MARKDOWN=md,mkd,markdown
 --type-set=RDOC=rdoc
+
+--ignore-dir=log
+--ignore-dir=tmp
