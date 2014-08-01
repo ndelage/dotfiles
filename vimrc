@@ -88,6 +88,8 @@ filetype plugin indent on
 " set winheight=30
 " set winminheight=5
 
+set textwidth=80
+
 " Leader + Custom Mappings
 let mapleader = "\\"
 
