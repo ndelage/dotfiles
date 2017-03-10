@@ -1,4 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_cnt =5
 let g:netrw_dirhist_1='/Users/nathaniel/groupon/config/local'
 let g:netrw_dirhist_2='/Volumes/External/ndelage_backup/.vim/bundle'
+let g:netrw_dirhist_3='/Users/nate/projects/piazza/src/oro/app/models'
+let g:netrw_dirhist_4='/Users/nate/projects/piazza/src/oro/app/fiat_plans/import'
+let g:netrw_dirhist_5='/Users/nate/projects/piazza/src/oro/app/models'

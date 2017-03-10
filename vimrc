@@ -4,12 +4,17 @@
 set nocompatible               " be iMproved
 filetype off                   " required!
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+" Provide a working path to the ack command for the ack plugin:
+let g:ackprg = "ack -s -H --nocolor --nogroup --column"
 
-" let Vundle manage Vundle
-" required for Vundle
-Bundle 'gmarik/vundle'
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
 
 " My Bundles here:
 " original repos on github
@@ -32,6 +37,9 @@ Bundle 'kien/ctrlp.vim'
 
 " required for Vundle
 filetype plugin indent on
+
+au BufNewFile,BufRead *.ejs set filetype=html
+
 
 " Softtabs, 2 spaces
 set tabstop=2
@@ -111,13 +119,6 @@ nmap , $p
 let g:CommandTMaxFiles=50000
 set wildignore+=.git,tmp,log,*.png,*.jpg,*.jpeg,*.gif,public/analytic,public/fonts,public/sounds,public/images,public/flash
 
-" -- Coffee Script
-map <Leader>cr :CoffeeRun<CR>
-map <Leader>cc :CoffeeCompile<CR>
-map <Leader>cm :CoffeeMake<CR>
-
-" END CUSTOM LEADER COMMANDS
-
 " Maps autocomplete to tab
 " imap <Tab> <C-N>
 
@@ -127,6 +128,9 @@ map <C-L> <C-W>l
 " same for j & k
 map <C-J> <C-W>j
 map <C-K> <C-W>k
+
+map ss <C-W>s
+map vv <C-W>v
 
 " Local config
 if filereadable(".vimrc.local")
@@ -176,3 +180,23 @@ map <leader>m :call RunTestFile()<cr>
 map <leader>. :call RunNearestTest()<cr>
 " Run all test files
 map <leader>a :call RunTests('spec')<cr>
+
+" Run a given vim command on the results of fuzzy selecting from a given shell
+" command. See usage below.
+function! SelectaCommand(choice_command, selecta_args, vim_command)
+  try
+    let selection = system(a:choice_command . " | selecta " . a:selecta_args)
+  catch /Vim:Interrupt/
+    " Swallow the ^C so that the redraw below happens; otherwise there will be
+    " leftovers from selecta on the screen
+    redraw!
+    return
+  endtry
+  redraw!
+  exec a:vim_command . " " . selection
+endfunction
+
+" Find all files in all non-dot directories starting in the working directory.
+" Fuzzy select one of those. Open the selected file with :e.
+nnoremap <leader>f :call SelectaCommand("find * -type f", "", ":e")<cr>
+

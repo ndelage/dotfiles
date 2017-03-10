@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
+#ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -41,9 +41,9 @@ DISABLE_CORRECTION=true
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git bundler brew gem)
+#plugins=(git bundler brew gem)
 
-source $ZSH/oh-my-zsh.sh
+#source $ZSH/oh-my-zsh.sh
 
 # Colorize terminal
 export TERM='xterm-color'
@@ -73,12 +73,12 @@ export ACK_COLOR_MATCH='red'
 export PATH="/usr/local/heroku/bin:$PATH"
 
 ### Add ~/bin
-export PATH=~/bin:$PATH
+#export PATH=~/bin:$PATH
 
 # Personal aliases
 alias reload_db="rake db:drop db:create db:migrate db:test:prepare"
 
 # Customize to your needs...
-export PATH=$PATH:bin:/opt/boxen/nodenv/versions/v0.10.5/bin:/opt/boxen/rbenv/shims:/opt/boxen/rbenv/bin:/opt/boxen/rbenv/plugins/ruby-build/bin:/opt/boxen/nodenv/shims:/opt/boxen/nodenv/bin:/opt/boxen/bin:/opt/boxen/homebrew/bin:/opt/boxen/homebrew/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin
-eval "$(rbenv init -)"
+export PATH=/usr/local/bin:$PATH
+# eval "$(rbenv init -)"
 

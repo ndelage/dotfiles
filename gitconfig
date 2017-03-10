@@ -1,7 +1,3 @@
-[user]
-	name = Nate Delage
-	email = nate@natedelage.com
-
 [color]
   branch = auto
   diff   = auto
@@ -37,12 +33,16 @@
 [push]
 	default = tracking
 [core]
-	excludesfile = /opt/boxen/config/git/gitignore
 	editor = /usr/bin/vim
 	autocrlf = false
 
 [credential]
-helper = /opt/boxen/bin/boxen-git-credential
+	helper = cache --timeout=14400
 
 [hub]
 protocol = https
+[user]
+	name = Nate Delage
+	email = nate@natedelage.com
+[github]
+	username = ndelage
